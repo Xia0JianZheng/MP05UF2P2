@@ -4,6 +4,7 @@ package ex2;
 // Modified by Fernando Porrino Serrano for academic purposes.
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 /**
  * Implementació d'una taula de hash sense col·lisions.
@@ -35,12 +36,28 @@ public class HashTable {
             entries[hash] = hashEntry;
         }
         else {
-            HashEntry temp = entries[hash];
+            //ERROR: no actualiza
+            //Código viejo
+            /*HashEntry temp = entries[hash];
             while(temp.next != null)
                 temp = temp.next;
 
             temp.next = hashEntry;
-            hashEntry.prev = temp;
+            hashEntry.prev = temp;*/
+
+            //Código arreglado:
+            HashEntry temp = entries[hash];
+            while(temp.next != null)
+                temp = temp.next;
+
+            if(temp.key != hashEntry.key){
+                temp.next = hashEntry;
+                hashEntry.prev = temp;
+            }else{
+                hashEntry.next = temp.prev;
+            }
+
+
         }
     }
 
