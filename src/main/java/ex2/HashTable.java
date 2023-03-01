@@ -44,17 +44,18 @@ public class HashTable {
 
             temp.next = hashEntry;
             hashEntry.prev = temp;*/
-
-            //Código arreglado:
             HashEntry temp = entries[hash];
-            while(temp.next != null)
+            while (temp != null) {
+                if (temp.key.equals(key)) {
+                    temp.value = value; // update existing value
+                    return;
+                }
+                if (temp.next == null) {
+                    temp.next = hashEntry;
+                    hashEntry.prev = temp;
+                    return;
+                }
                 temp = temp.next;
-
-            if(temp.key != hashEntry.key){
-                temp.next = hashEntry;
-                hashEntry.prev = temp;
-            }else{
-                hashEntry.next = temp.prev;
             }
 
 
@@ -66,6 +67,8 @@ public class HashTable {
      * @param key La clau de l'element a trobar.
      * @return El propi element que es busca (null si no s'ha trobat).
      */
+    //ERROR trow exception
+    /*
     public String get(String key) {
         int hash = getHash(key);
         if(entries[hash] != null) {
@@ -77,6 +80,22 @@ public class HashTable {
             return temp.value;
         }
 
+        return null;
+    }
+    */
+
+    public String get(String key) {
+        int hash = getHash(key);
+        if(entries[hash] != null) {
+            HashEntry temp = entries[hash];
+
+            while( temp != null){
+                if (temp.key.equals(key)) {
+                    return temp.value;
+                }
+                temp = temp.next;
+            }
+        }
         return null;
     }
 

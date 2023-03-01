@@ -158,7 +158,7 @@ public class Enunciat {
             Obtenir un element que col·lisiona dins una taula (3a posició dins el mateix bucket).
             Obtenir un elements que no existeix perquè la seva posició està buida (no hi ha cap element dins el bucket).
             Obtenir un elements que no existeix, tot i que la seva posició està ocupada per un altre que no col·lisiona.
-            Obtenir un elements que no existeix, tot i que la seva posició està ocupada per 3 elements col·lisionats.
+
 
      Drop:
         S'ha de fer servir el mètode "toString" per a comprovar que la taula conté els elements correctes després de
@@ -172,7 +172,7 @@ public class Enunciat {
             Esborrar un element que si col·lisiona dins una taula (1a posició dins el mateix bucket).
             Esborrar un element que si col·lisiona dins una taula (2a posició dins el mateix bucket).
             Esborrar un element que si col·lisiona dins una taula (3a posició dins el mateix bucket).
-            Eliminar un elements que no existeix perquè la seva posició està buida (no hi ha cap element dins el bucket).
+             Eliminar un elements que no existeix perquè la seva posició està buida (no hi ha cap element dins el bucket).
             Eliminar un elements que no existeix, tot i que la seva posició està ocupada per un altre que no col·lisiona.
             Eliminar un elements que no existeix, tot i que la seva posició està ocupada per 3 elements col·lisionats.
 
