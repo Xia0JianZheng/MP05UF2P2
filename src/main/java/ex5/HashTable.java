@@ -84,7 +84,7 @@ public class HashTable {
             entries[hash] = hashEntry;
             collision = false;
         } else {
-            // Collision handling
+            // comprobar el key para actualizar el valor
             HashEntry current = entries[hash];
             while (current != null) {
                 if (current.key.equals(key)) {
@@ -94,7 +94,7 @@ public class HashTable {
                 current = current.next;
             }
 
-            // Move elements to the new array
+            // añadir nueva entrada a la nueva array
             newSize = currentSize * 2;
             currentSize = newSize;
             newEntries = new HashEntry[newSize];
@@ -107,7 +107,7 @@ public class HashTable {
                     if (newEntries[newHash] == null) {
                         newEntries[newHash] = newEntry;
                     } else {
-                        // Recursive call if collision occurs in new array
+                        // llama recursiva si occurre una collision en la array
                         SIZE = newSize;
                         entries = newEntries;
                         put(entry.key, entry.value);
@@ -117,12 +117,11 @@ public class HashTable {
                 }
             }
 
-            // Add new entry to new array
             int newHash = getHash(key);
             if (newEntries[newHash] == null) {
                 newEntries[newHash] = hashEntry;
             } else {
-                // Recursive call if collision occurs in new array
+
                 SIZE = newSize;
                 entries = newEntries;
                 put(key, value);
@@ -247,6 +246,27 @@ public class HashTable {
 
         int bucket = 0;
         StringBuilder hashTableStr = new StringBuilder();
+        /*
+        for (HashEntry entry : entries) {
+            if(entry == null) {
+                bucket++;
+                continue;
+            }
+
+            hashTableStr.append("\n bucket[")
+                    .append(bucket)
+                    .append("] = ")
+                    .append(entry.toString());
+            bucket++;
+            HashEntry temp = entry.next;
+            while(temp != null) {
+                hashTableStr.append(" -> ");
+                hashTableStr.append(temp.toString());
+                temp = temp.next;
+            }
+        }
+        return hashTableStr.toString();
+        */
         if(collision){
             for (HashEntry entry : newEntries) {
                 if(entry == null) {
